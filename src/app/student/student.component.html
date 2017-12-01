@@ -1,0 +1,36 @@
+<!-- Student form with name and age fields and a submit button  -->
+<div class="well well-lg">
+  <form>
+    <div class="form-group">
+      <label for="StudentName">Name</label>
+      <input type="text" class="form-control" id="studentName" name="name" #mystudentInput>
+    </div>
+    <div class="form-group">
+      <label for="studentAge">Age</label>
+      <input type="text" class="form-control" id="studentAge" name="age"  #mystudentAge>
+    </div>
+    <button name="save" class="btn btn-primary" (click)="onSave(mystudentInput.value, mystudentAge.value)">
+      Save
+    </button>
+  </form>
+</div>
+<!-- displaying the student details entered in the form on Button click in a table and ngIf to conditionally show the student details -->
+<div class="container" *ngIf="hideTable">
+<h1 [ngStyle]={align:center}>Student Details</h1>
+<table class="table">
+        <thead>
+          <tr>
+            <th>S.NO</th>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+  <tbody>
+    <tr *ngFor="let s of studentList;let i = index" [attr.data-index]="i">
+      <td>{{i+1}}</td>
+      <td>{{s.name}}</td>
+      <td>{{s.age}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
